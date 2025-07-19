@@ -1,4 +1,4 @@
-import UserDetails from './UserDetails';
+import UserDetails from './';
 
 function UserInfo() {
   return <UserDetails />;
