@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRecipeStore } from './recipeStore';
 import DeleteRecipeButton from './DeleteRecipeButton';
-import UpdateRecipeForm from './UpdateRecipeForm';
+import EditRecipeForm from "./EditRecipeForm";
 import { useState } from 'react';
 
 const RecipeDetails = () => {
