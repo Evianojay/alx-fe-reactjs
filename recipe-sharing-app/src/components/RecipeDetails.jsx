@@ -1,10 +1,16 @@
 // src/components/RecipeDetails.jsx
 import React from 'react';
+import { useRecipeStore } from './recipeStore';
 import DeleteRecipeButton from './DeleteRecipeButton';
 import UpdateRecipeForm from './UpdateRecipeForm';
 import { useState } from 'react';
 
-const RecipeDetails = ({ recipe }) => {
+const RecipeDetails = () => {
+  const selectedRecipeId = useRecipeStore(state => state.selectedRecipeId);
+  const recipe = useRecipeStore(state =>
+    state.recipes.find(r => r.id === selectedRecipeId)
+  );
+
   const [isEditing, setIsEditing] = useState(false);
 
   if (!recipe) {
