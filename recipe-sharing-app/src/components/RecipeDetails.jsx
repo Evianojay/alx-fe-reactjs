@@ -20,7 +20,7 @@ const RecipeDetails = () => {
   return (
     <div>
       {isEditing ? (
-        <UpdateRecipeForm recipe={recipe} onClose={() => setIsEditing(false)} />
+        <EditRecipeForm recipe={recipe} onClose={() => setIsEditing(false)} />
       ) : (
         <>
           <h2>{recipe.title}</h2>
