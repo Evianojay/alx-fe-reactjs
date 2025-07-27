@@ -2,7 +2,8 @@
 import { Routes, Route } from 'react-router-dom';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
-import RecipeDetails from './components/RecipeDetail';
+import RecipeDetail from './components/RecipeDetail';
+
 import SearchBar from './components/SearchBar';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             </>
           }
         />
-        <Route path="/recipe/:id" element={<RecipeDetails />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
       </Routes>
     </div>
   );

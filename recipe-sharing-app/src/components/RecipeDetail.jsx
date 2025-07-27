@@ -1,40 +1,71 @@
-// src/components/RecipeDetails.jsx
+// src/components/RecipeDetail.jsx
 import { useParams, useNavigate } from 'react-router-dom';
 import { useRecipeStore } from './recipeStore';
+import { useState } from 'react';
 
-const RecipeDetails = () => {
+const RecipeDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { recipes, updateRecipe, deleteRecipe } = useRecipeStore();
+  const recipes = useRecipeStore(state => state.recipes);
+  const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
+  const updateRecipe = useRecipeStore(state => state.updateRecipe);
 
-  const recipe = recipes.find((r) => r.id === id);
+  const recipe = recipes.find(r => r.id === id);
 
-  if (!recipe) {
-    return <p>Recipe not found.</p>;
-  }
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedRecipe, setEditedRecipe] = useState(recipe || {});
+
+  if (!recipe) return <p>Recipe not found</p>;
 
   const handleDelete = () => {
     deleteRecipe(id);
     navigate('/');
   };
 
-  const handleEdit = () => {
-    const newTitle = prompt('Enter new title', recipe.title);
-    const newInstructions = prompt('Enter new instructions', recipe.instructions);
-    if (newTitle && newInstructions) {
-      updateRecipe({ ...recipe, title: newTitle, instructions: newInstructions });
-      navigate('/');
-    }
+  const handleEditToggle = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const handleChange = (e) => {
+    setEditedRecipe({
+      ...editedRecipe,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleUpdate = () => {
+    updateRecipe(editedRecipe);
+    setIsEditing(false);
   };
 
   return (
     <div>
-      <h2>{recipe.title}</h2>
-      <p>{recipe.instructions}</p>
-      <button onClick={handleEdit}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
+      {isEditing ? (
+        <>
+          <input
+            name="title"
+            value={editedRecipe.title}
+            onChange={handleChange}
+          />
+          <textarea
+            name="description"
+            value={editedRecipe.description}
+            onChange={handleChange}
+          />
+          <button onClick={handleUpdate}>Save</button>
+        </>
+      ) : (
+        <>
+          <h2>{recipe.title}</h2>
+          <p>{recipe.description}</p>
+          <button onClick={handleEditToggle}>Edit</button>
+        </>
+      )}
+      <button onClick={handleDelete} style={{ color: 'red' }}>
+        Delete
+      </button>
     </div>
   );
 };
 
-export default RecipeDetails;
+export default RecipeDetail;
