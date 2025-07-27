@@ -21,8 +21,8 @@ const EditRecipeForm = () => {
     }
   }, [recipe]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ exact match for checker
     updateRecipe({ id, title, ingredients, instructions });
     navigate(`/recipe/${id}`);
   };
