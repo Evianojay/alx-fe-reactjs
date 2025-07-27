@@ -57,6 +57,7 @@ const RecipeDetail = () => {
       ) : (
         <>
           <h2>{recipe.title}</h2>
+          <p><strong>ID:</strong> {recipe.id}</p> {/* ✅ This line is crucial */}
           <p>{recipe.description}</p>
           <button onClick={handleEditToggle}>Edit</button>
         </>
