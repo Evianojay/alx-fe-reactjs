@@ -18,12 +18,12 @@ const Search = () => {
     try {
       const results = await fetchUserData(username, location, minRepos);
       if (results.length === 0) {
-        setError('Looks like we can’t find the user');
+        setError("Looks like we cant find the user");
       } else {
         setUsers(results);
       }
     } catch {
-      setError('Looks like we can’t find the user');
+      setError("Looks like we cant find the user");
     } finally {
       setLoading(false);
     }
