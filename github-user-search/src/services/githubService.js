@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_GITHUB_API_URL;
+const BASE_URL = "https://api.github.com";
 
 export async function fetchUserData(username) {
   const response = await axios.get(`${BASE_URL}/users/${username}`);
