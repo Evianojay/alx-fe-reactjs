@@ -1,15 +1,15 @@
 function UserProfile() {
   return (
-    <div className="bg-gray-100 p-4 sm:p-4 md:p-8 max-w-xs sm:max-w-xs md:max-w-sm mx-auto my-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+    <div className="bg-gray-100 p-4 sm:p-8 max-w-xs sm:max-w-sm mx-auto my-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
       <img
         src="https://randomuser.me/api/portraits/men/75.jpg"
         alt="User"
-        className="rounded-full w-24 h-24 md:w-36 md:h-36 mx-auto ring-4 ring-blue-200 shadow-md"
+        className="rounded-full sm:w-24 sm:h-24 w-36 h-36 mx-auto ring-4 ring-blue-200 shadow-md"
       />
-      <h1 className="text-lg md:text-xl text-blue-800 my-4 font-semibold tracking-wide text-center">
+      <h1 className="text-lg sm:text-xl text-blue-800 my-4 font-semibold tracking-wide text-center">
         John Doe
       </h1>
-      <p className="text-sm md:text-base text-gray-600 leading-relaxed text-center">
+      <p className="text-sm sm:text-base text-gray-600 leading-relaxed text-center">
         Developer at Example Co. Loves to write code and explore new technologies.
       </p>
       <div className="mt-6 flex justify-center">
