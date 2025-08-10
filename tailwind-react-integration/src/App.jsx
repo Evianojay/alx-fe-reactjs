@@ -1,12 +1,14 @@
-import React from 'react'
-import './App.css'
-function App() {
+// src/App.jsx
+import React from 'react';
+import UserProfile from './components/UserProfile';
+import './index.css'; // ensure Tailwind (or your CSS) is imported here
 
+function App() {
   return (
-    <>
-      <h1 className="text-4xl font-bold text-red-500">Hello Tailwind</h1>
-    </>
-  )
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+      <UserProfile />
+    </div>
+  );
 }
 
-export default App
+export default App;
