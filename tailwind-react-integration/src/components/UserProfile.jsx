@@ -4,7 +4,7 @@ function UserProfile() {
       <img
         src="https://randomuser.me/api/portraits/men/75.jpg"
         alt="User"
-        className="rounded-full sm:w-24 sm:h-24 w-36 h-36 mx-auto ring-4 ring-blue-200 shadow-md"
+        className="rounded-full sm:w-24 sm:h-24 md:w-36 md:h-36 mx-auto ring-4 ring-blue-200 shadow-md"
       />
       <h1 className="text-lg md:text-xl text-blue-800 my-4 font-semibold tracking-wide text-center">
         John Doe
