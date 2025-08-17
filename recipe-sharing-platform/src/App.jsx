@@ -1,15 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
 import HomePage from "./components/HomePage";
-import AddRecipeForm from "./components/AddRecipeForm";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/add" element={<AddRecipeForm />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen bg-gray-100">
+      <HomePage />
+    </div>
   );
 }
 

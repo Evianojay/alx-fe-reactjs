@@ -1,234 +1,74 @@
 [
   {
     "id": 1,
-    "name": "Jollof Rice",
-    "description": "A classic Nigerian party dish with tomatoes and spices.",
-    "image": "/images/jollof-rice.jpg",
-    "ingredients": [
-      "3 cups rice",
-      "2 cups blended tomatoes",
-      "1 onion",
-      "1/2 cup vegetable oil",
-      "Seasoning cubes",
-      "1 tsp thyme",
-      "2 red bell peppers"
-    ],
-    "steps": [
-      "Parboil rice and set aside.",
-      "Blend tomatoes, peppers, and onion.",
-      "Fry the mixture in oil with spices until thick.",
-      "Add rice, stock, and seasoning, then cook until soft.",
-      "Serve with fried plantain or chicken."
-    ]
+    "title": "Jollof Rice",
+    "summary": "A classic West African one-pot rice dish cooked with tomatoes, peppers, and spices.",
+    "image": "/images/jollof-rice.jpg"
   },
   {
     "id": 2,
-    "name": "Egusi Soup",
-    "description": "A hearty soup made from ground melon seeds, leafy greens, and assorted meats.",
-    "image": "/images/egusi-soup.jpg",
-    "ingredients": [
-      "2 cups egusi (melon seeds)",
-      "Palm oil",
-      "Spinach or bitterleaf",
-      "Assorted meat and stockfish",
-      "Seasoning cubes",
-      "Ground crayfish"
-    ],
-    "steps": [
-      "Grind egusi and set aside.",
-      "Heat palm oil, add onions and fry.",
-      "Add meat stock and egusi paste.",
-      "Stir and cook until thick.",
-      "Add vegetables and simmer before serving."
-    ]
+    "title": "Egusi Soup",
+    "summary": "A hearty Nigerian soup made with ground melon seeds, leafy greens, and assorted meats.",
+    "image": "/images/egusi-soup.jpg"
   },
   {
     "id": 3,
-    "name": "Suya",
-    "description": "Spicy grilled beef skewers coated with yaji (suya spice mix).",
-    "image": "/images/suya.jpg",
-    "ingredients": [
-      "1 kg beef (thinly sliced)",
-      "Yaji (suya spice mix)",
-      "Groundnut oil",
-      "Onions and tomatoes (for garnish)"
-    ],
-    "steps": [
-      "Marinate beef with suya spice and oil.",
-      "Thread beef onto skewers.",
-      "Grill over open flame until cooked.",
-      "Serve with sliced onions and tomatoes."
-    ]
+    "title": "Suya",
+    "summary": "Popular street food of spicy grilled beef skewers coated with yaji (suya spice mix).",
+    "image": "/images/suya.jpg"
   },
   {
     "id": 4,
-    "name": "Moi Moi",
-    "description": "Steamed bean pudding made from blended beans, peppers, and spices.",
-    "image": "/images/moi-moi.jpg",
-    "ingredients": [
-      "2 cups peeled beans",
-      "Red bell peppers",
-      "1 onion",
-      "Palm oil or vegetable oil",
-      "Seasoning cubes"
-    ],
-    "steps": [
-      "Blend beans, peppers, and onion into a smooth paste.",
-      "Add oil and seasoning, mix well.",
-      "Pour into containers or leaves.",
-      "Steam until firm and cooked through."
-    ]
+    "title": "Moi Moi",
+    "summary": "Steamed bean pudding made from blended black-eyed peas, peppers, and spices.",
+    "image": "/images/moi-moi.jpg"
   },
   {
     "id": 5,
-    "name": "Pounded Yam and Efo Riro",
-    "description": "Smooth pounded yam served with a rich spinach and tomato-based stew.",
-    "image": "/images/pounded-yam-efo-riro.jpg",
-    "ingredients": [
-      "Yam tubers",
-      "Spinach or ugu leaves",
-      "Palm oil",
-      "Tomatoes and peppers",
-      "Assorted meats",
-      "Seasoning cubes"
-    ],
-    "steps": [
-      "Boil yam until soft, then pound until smooth.",
-      "Prepare stew with tomatoes, palm oil, and spices.",
-      "Add spinach and meats to the stew.",
-      "Serve hot with pounded yam."
-    ]
+    "title": "Pounded Yam and Efo Riro",
+    "summary": "Smooth pounded yam served with a rich spinach and tomato-based stew.",
+    "image": "/images/pounded-yam-efo-riro.jpg"
   },
   {
     "id": 6,
-    "name": "Akara",
-    "description": "Deep-fried bean cakes made from black-eyed peas and onions.",
-    "image": "/images/akara.jpg",
-    "ingredients": [
-      "2 cups peeled beans",
-      "1 onion",
-      "1 red pepper",
-      "Salt to taste",
-      "Vegetable oil for frying"
-    ],
-    "steps": [
-      "Blend beans, onion, and pepper into a thick paste.",
-      "Whisk mixture to incorporate air.",
-      "Scoop batter into hot oil and fry until golden brown.",
-      "Serve hot with pap or bread."
-    ]
+    "title": "Akara",
+    "summary": "Deep-fried bean cakes made from blended black-eyed peas and onions, often eaten at breakfast.",
+    "image": "/images/akara.jpg"
   },
   {
     "id": 7,
-    "name": "Pepper Soup",
-    "description": "A spicy broth made with goat meat or fish and traditional spices.",
-    "image": "/images/pepper-soup.jpg",
-    "ingredients": [
-      "Goat meat or catfish",
-      "Pepper soup spice mix",
-      "Scent leaves",
-      "Seasoning cubes",
-      "Chili peppers"
-    ],
-    "steps": [
-      "Boil meat or fish with seasoning.",
-      "Add pepper soup spices and chili.",
-      "Simmer until tender.",
-      "Add scent leaves before serving."
-    ]
+    "title": "Pepper Soup",
+    "summary": "A spicy and aromatic broth made with fish, goat meat, or chicken and traditional spices.",
+    "image": "/images/pepper-soup.jpg"
   },
   {
     "id": 8,
-    "name": "Ofada Rice and Ayamase",
-    "description": "Local Nigerian rice served with green pepper stew.",
-    "image": "/images/ofada-ayamase.jpg",
-    "ingredients": [
-      "Ofada rice",
-      "Green peppers",
-      "Palm oil",
-      "Locust beans (iru)",
-      "Assorted meats",
-      "Seasoning cubes"
-    ],
-    "steps": [
-      "Cook Ofada rice until done.",
-      "Blend green peppers and onions.",
-      "Fry mixture in palm oil with locust beans.",
-      "Add meats and seasoning, then simmer.",
-      "Serve stew with rice."
-    ]
+    "title": "Ofada Rice and Ayamase",
+    "summary": "Local Nigerian rice served with green pepper stew, usually spicy and flavorful.",
+    "image": "/images/ofada-ayamase.jpg"
   },
   {
     "id": 9,
-    "name": "Okra Soup",
-    "description": "Nutritious soup cooked with okra, palm oil, and assorted proteins.",
-    "image": "/images/okra-soup.jpg",
-    "ingredients": [
-      "Fresh okra",
-      "Palm oil",
-      "Spinach or ugu leaves",
-      "Assorted meats",
-      "Ground crayfish",
-      "Seasoning cubes"
-    ],
-    "steps": [
-      "Chop or blend okra.",
-      "Cook meats and add palm oil.",
-      "Add okra and stir until slimy.",
-      "Add vegetables and crayfish, simmer, and serve."
-    ]
+    "title": "Okra Soup",
+    "summary": "Slimy and nutritious soup cooked with okra, palm oil, and assorted proteins.",
+    "image": "/images/okra-soup.jpg"
   },
   {
     "id": 10,
-    "name": "Boli (Roasted Plantain)",
-    "description": "Charcoal-roasted ripe plantains, often served with pepper sauce.",
-    "image": "/images/boli.jpg",
-    "ingredients": [
-      "Ripe plantains",
-      "Groundnut or pepper sauce"
-    ],
-    "steps": [
-      "Peel plantains and roast over charcoal until charred.",
-      "Serve hot with groundnut or pepper sauce."
-    ]
+    "title": "Boli (Roasted Plantain)",
+    "summary": "Charcoal-roasted ripe plantains, often served with groundnut sauce or peppered sauce.",
+    "image": "/images/boli.jpg"
   },
   {
     "id": 11,
-    "name": "Nkwobi",
-    "description": "A delicacy made from cow foot cooked in palm oil sauce and spices.",
-    "image": "/images/nkwobi.jpg",
-    "ingredients": [
-      "Cow foot",
-      "Palm oil",
-      "Potash (akwaun)",
-      "Ugba (oil bean)",
-      "Seasoning cubes",
-      "Chili pepper"
-    ],
-    "steps": [
-      "Boil cow foot until tender.",
-      "Mix palm oil and potash until thick.",
-      "Add meat, ugba, and spices.",
-      "Stir and serve in a wooden bowl."
-    ]
+    "title": "Nkwobi",
+    "summary": "A delicacy made from cow foot cooked in palm oil sauce and traditional spices.",
+    "image": "/images/nkwobi.jpg"
   },
   {
     "id": 12,
-    "name": "Zobo Drink",
-    "description": "Refreshing hibiscus flower drink spiced with ginger and pineapple.",
-    "image": "/images/zobo.jpg",
-    "ingredients": [
-      "2 cups dried hibiscus petals",
-      "1 pineapple",
-      "Ginger",
-      "Cloves",
-      "Sugar (optional)"
-    ],
-    "steps": [
-      "Boil hibiscus petals with ginger and cloves.",
-      "Add pineapple chunks and simmer.",
-      "Strain and chill.",
-      "Serve cold over ice."
-    ]
+    "title": "Zobo Drink",
+    "summary": "Refreshing hibiscus flower drink spiced with ginger, cloves, and pineapple.",
+    "image": "/images/zobo.jpg"
   }
 ]
