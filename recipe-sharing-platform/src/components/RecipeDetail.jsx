@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import recipesData from "../data.json";
 
 const RecipeDetail = () => {
-  const { id } = useParams(); // ✅ get recipe ID from URL
-  const recipe = recipesData.find((r) => r.id === parseInt(id));
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    // Find recipe by ID when component mounts or ID changes
+    const found = recipesData.find((r) => r.id === parseInt(id));
+    setRecipe(found);
+  }, [id]);
 
   if (!recipe) {
     return (
@@ -40,7 +46,7 @@ const RecipeDetail = () => {
       <div className="bg-gray-100 rounded-lg p-6 shadow-md mb-6">
         <h2 className="text-2xl font-semibold mb-4">🛒 Ingredients</h2>
         <ul className="list-disc list-inside space-y-2">
-          {recipe.ingredients.map((ingredient, index) => (
+          {recipe.ingredients?.map((ingredient, index) => (
             <li key={index} className="text-gray-700">
               {ingredient}
             </li>
@@ -52,7 +58,7 @@ const RecipeDetail = () => {
       <div className="bg-gray-100 rounded-lg p-6 shadow-md mb-6">
         <h2 className="text-2xl font-semibold mb-4">👩‍🍳 Instructions</h2>
         <ol className="list-decimal list-inside space-y-3">
-          {recipe.instructions.map((step, index) => (
+          {recipe.instructions?.map((step, index) => (
             <li key={index} className="text-gray-700">
               {step}
             </li>
