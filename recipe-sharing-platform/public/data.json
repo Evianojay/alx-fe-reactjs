@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Jollof Rice",
+    "summary": "A classic West African one-pot rice dish cooked with tomatoes, peppers, and spices.",
+    "image": "/images/jollof-rice.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Egusi Soup",
+    "summary": "A hearty Nigerian soup made with ground melon seeds, leafy greens, and assorted meats.",
+    "image": "/images/egusi-soup.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Suya",
+    "summary": "Popular street food of spicy grilled beef skewers coated with yaji (suya spice mix).",
+    "image": "/images/suya.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Moi Moi",
+    "summary": "Steamed bean pudding made from blended black-eyed peas, peppers, and spices.",
+    "image": "/images/moi-moi.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Pounded Yam and Efo Riro",
+    "summary": "Smooth pounded yam served with a rich spinach and tomato-based stew.",
+    "image": "/images/pounded-yam-efo-riro.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Akara",
+    "summary": "Deep-fried bean cakes made from blended black-eyed peas and onions, often eaten at breakfast.",
+    "image": "/images/akara.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Pepper Soup",
+    "summary": "A spicy and aromatic broth made with fish, goat meat, or chicken and traditional spices.",
+    "image": "/images/pepper-soup.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Ofada Rice and Ayamase",
+    "summary": "Local Nigerian rice served with green pepper stew, usually spicy and flavorful.",
+    "image": "/images/ofada-ayamase.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Okra Soup",
+    "summary": "Slimy and nutritious soup cooked with okra, palm oil, and assorted proteins.",
+    "image": "/images/okra-soup.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Boli (Roasted Plantain)",
+    "summary": "Charcoal-roasted ripe plantains, often served with groundnut sauce or peppered sauce.",
+    "image": "/images/boli.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Nkwobi",
+    "summary": "A delicacy made from cow foot cooked in palm oil sauce and traditional spices.",
+    "image": "/images/nkwobi.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Zobo Drink",
+    "summary": "Refreshing hibiscus flower drink spiced with ginger, cloves, and pineapple.",
+    "image": "/images/zobo.jpg"
+  }
+]
