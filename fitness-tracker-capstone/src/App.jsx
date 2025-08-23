@@ -1,11 +1,14 @@
 import React from "react";
-import ExerciseList from "./components/ExerciseList";
+import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold text-center py-6">💪 Fitness Tracker</h1>
-      <ExerciseList />
+    <div className="min-h-screen bg-base-black text-base-white">
+      <Navbar />
+      <main className="pt-20">
+        <Dashboard />
+      </main>
     </div>
   );
 }

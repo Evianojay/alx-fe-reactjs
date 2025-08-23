@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global body setup */
+body {
+  @apply bg-base-black text-base-white font-body;
+  background-image: url('/assets/textures/noise.png');
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+/* Frosted glass utility */
+.glass {
+  @apply bg-frosted backdrop-blur-xs border border-white/10 rounded-lg shadow-lg;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  @apply font-techno text-accent-neonBlueViolet;
+}
