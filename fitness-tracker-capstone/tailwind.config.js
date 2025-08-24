@@ -4,6 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+            "neon-blue": "#6A5ACD",
+    "neon-teal": "#00F5D4",
+    "neon-orange": "#FF4500",
         base: {
           black: "#0A0A0A",
           white: "#FFFFFF",
