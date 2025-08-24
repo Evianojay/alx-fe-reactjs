@@ -1,71 +1,54 @@
 // src/components/RegistrationForm.jsx
 import React, { useState } from "react";
 
-export default function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+function RegistrationForm() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!formData.username || !formData.email || !formData.password) {
-      setError("All fields are required!");
-      return;
-    }
-
-    setError("");
-    console.log("Form submitted:", formData);
-    // simulate API call
-    alert("User registered successfully!");
+    console.log({ username, email, password });
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto" }}>
-      <h2>Controlled Registration Form</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Username:</label>
+        <input
+          type="text"
+          name="username"
+          value={username}   {/* ✅ controlled */}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </div>
 
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={email}   {/* ✅ controlled */}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
 
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={password}   {/* ✅ controlled */}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
 
-        <button type="submit">Register</button>
-      </form>
-    </div>
+      <button type="submit">Register</button>
+    </form>
   );
 }
+
+export default RegistrationForm;
