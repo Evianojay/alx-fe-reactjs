@@ -1,190 +1,71 @@
-import { useState } from 'react';
+// src/components/RegistrationForm.jsx
+import React, { useState } from "react";
 
-const RegistrationForm = () => {
-  // Separate state variables for each form field (controlled components)
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export default function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
-  // Handle input changes for each field
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-    if (errors.username) {
-      setErrors(prev => ({ ...prev, username: '' }));
-    }
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    if (errors.email) {
-      setErrors(prev => ({ ...prev, email: '' }));
-    }
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    if (errors.password) {
-      setErrors(prev => ({ ...prev, password: '' }));
-    }
-  };
-
-  // Validate form data
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!username.trim()) {
-      newErrors.username = 'Username is required';
-    } else if (username.length < 3) {
-      newErrors.username = 'Username must be at least 3 characters long';
-    }
-
-    if (!email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-
-    if (!password.trim()) {
-      newErrors.password = 'Password is required';
-    } else if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters long';
-    }
-
-    return newErrors;
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
-    const validationErrors = validateForm();
-    
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+
+    if (!formData.username || !formData.email || !formData.password) {
+      setError("All fields are required!");
       return;
     }
 
-    setIsSubmitting(true);
-    setErrors({});
-
-    try {
-      // Simulate API call to mock registration endpoint
-      const response = await fetch('https://jsonplaceholder.typicode.com/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: username,
-          email: email,
-          password: password
-        }),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Registration successful:', result);
-        alert('Registration successful!');
-        
-        // Reset form after successful submission
-        setUsername('');
-        setEmail('');
-        setPassword('');
-      } else {
-        throw new Error('Registration failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Registration failed. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setError("");
+    console.log("Form submitted:", formData);
+    // simulate API call
+    alert("User registered successfully!");
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-        User Registration (Controlled Components)
-      </h2>
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div style={{ maxWidth: "400px", margin: "0 auto" }}>
+      <h2>Controlled Registration Form</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
-            Username
-          </label>
+          <label>Username:</label>
           <input
             type="text"
-            id="username"
             name="username"
             value={formData.username}
-            onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              errors.username ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Enter your username"
+            onChange={handleChange}
           />
-          {errors.username && (
-            <p className="mt-1 text-sm text-red-600">{errors.username}</p>
-          )}
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Email
-          </label>
+          <label>Email:</label>
           <input
             type="email"
-            id="email"
             name="email"
             value={formData.email}
-            onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Enter your email"
+            onChange={handleChange}
           />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-          )}
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            Password
-          </label>
+          <label>Password:</label>
           <input
             type="password"
-            id="password"
             name="password"
             value={formData.password}
-            onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              errors.password ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Enter your password"
+            onChange={handleChange}
           />
-          {errors.password && (
-            <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-          )}
         </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={`w-full py-2 px-4 rounded-md font-medium text-white transition duration-200 ${
-            isSubmitting
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
-          }`}
-        >
-          {isSubmitting ? 'Registering...' : 'Register'}
-        </button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
-};
-
-export default RegistrationForm;
+}
