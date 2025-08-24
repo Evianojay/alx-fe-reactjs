@@ -1,54 +1,77 @@
-// src/components/RegistrationForm.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 
-function RegistrationForm() {
+export default function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ username, email, password });
+    let formErrors = {};
+
+    if (!username) {
+      formErrors.username = "Username is required";
+    }
+    if (!email) {
+      formErrors.email = "Email is required";
+    }
+    if (!password) {
+      formErrors.password = "Password is required";
+    }
+
+    setErrors(formErrors);
+
+    if (Object.keys(formErrors).length === 0) {
+      console.log("Form submitted:", { username, email, password });
+      // ✅ Clear fields after successful submission
+      setUsername("");
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label>Username:</label>
+        <label className="block">Username:</label>
         <input
           type="text"
-          name="username"
-          value={username}   {/* ✅ controlled */}
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
+          className="border p-2 w-full"
         />
+        {errors.username && (
+          <p className="text-red-500 text-sm">{errors.username}</p>
+        )}
       </div>
-
       <div>
-        <label>Email:</label>
+        <label className="block">Email:</label>
         <input
           type="email"
-          name="email"
-          value={email}   {/* ✅ controlled */}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
+          className="border p-2 w-full"
         />
+        {errors.email && (
+          <p className="text-red-500 text-sm">{errors.email}</p>
+        )}
       </div>
-
       <div>
-        <label>Password:</label>
+        <label className="block">Password:</label>
         <input
           type="password"
-          name="password"
-          value={password}   {/* ✅ controlled */}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          className="border p-2 w-full"
         />
+        {errors.password && (
+          <p className="text-red-500 text-sm">{errors.password}</p>
+        )}
       </div>
-
-      <button type="submit">Register</button>
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2">
+        Register
+      </button>
     </form>
   );
 }
-
-export default RegistrationForm;
