@@ -1,16 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Profile from "./components/Profile";
-import ProfileDetails from "./components/ProfileDetails";
-import ProfileSettings from "./components/ProfileSettings";
-import User from "./components/User";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Public route */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
@@ -22,14 +20,7 @@ function App() {
               <Profile />
             </ProtectedRoute>
           }
-        >
-          {/* Nested routes */}
-          <Route path="details" element={<ProfileDetails />} />
-          <Route path="settings" element={<ProfileSettings />} />
-        </Route>
-
-        {/* Dynamic route */}
-        <Route path="/user/:userId" element={<User />} />
+        />
       </Routes>
     </Router>
   );
