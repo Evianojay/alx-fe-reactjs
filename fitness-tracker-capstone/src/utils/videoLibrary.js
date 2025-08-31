@@ -1,11 +1,55 @@
 // src/utils/videoLibrary.js
 export const videoLibrary = {
-  "Single Arm Plank to Row": "https://www.youtube.com/embed/LlctzOySCkg", // Verified working
-  "Tricep Pushdown on Cable": "https://www.youtube.com/embed/2-LAMcpzODU", // Standard demo
-  "Step-ups": "https://www.youtube.com/embed/aajhW7DD1EA", // Valid demo
-  "Kettlebell Swing": "https://www.youtube.com/embed/6vQW8Tl_KLc", // Verified standard
-  "Arnold Shoulder Press": "https://www.youtube.com/embed/vj2w851ZHRM", // Common instructional
-  "Cable Rear Delt Fly": "https://www.youtube.com/embed/GtHNC-4St00", // Verified
-  "Box Squat": "https://www.youtube.com/embed/7xvR_D0VOUk", // Accessible
-  "Push-up rotations": "https://www.youtube.com/embed/u6tG51L0TjY", // Demonstration available
+  "Single Arm Plank to Row": "https://www.youtube.com/embed/LlctzOySCkg",
+  "Tricep Pushdown on Cable": "https://www.youtube.com/embed/2-LAMcpzODU",
+  "Step-ups": "https://www.youtube.com/embed/aajhW7DD1EA",
+  "Kettlebell Swing": "https://www.youtube.com/embed/6vQW8Tl_KLc",
+  "Arnold Shoulder Press": "https://www.youtube.com/embed/vj2w851ZHRM",
+  "Cable Rear Delt Fly": "https://www.youtube.com/embed/bkejPHrPkmA",
+  "Box Squat": "https://www.youtube.com/embed/rMEPHwNhQfo",
+  "Push-up rotations": "https://www.youtube.com/embed/YFVryMZJQKA",
+
+
+  "Abdominal Stabilization": "https://www.youtube.com/embed/pFK0xXEnv6s",
+  "Axe Hold": "https://www.youtube.com/embed/wLEFrDO8BVk",
+  "Commando Pull-ups": "https://www.youtube.com/embed/8PMUG46CmHc",
+  "Fingerboard 20 mm edge": "https://www.youtube.com/embed/jgTakI1NMOk",
+  "Incline Bench Reverse Fly": "https://www.youtube.com/embed/ZVsJl8K-K3o",
+  "Handstand Push Up": "https://www.youtube.com/embed/gSjHRuRQ4hk",
+  "Zone 2 Running": "https://www.youtube.com/embed/zXETuMcPZ1c",
+  "Lying Dumbbell Row SS Seated Shrug": "https://www.youtube.com/embed/7wCBuujebx4",
+  "Suspended Crosses": "https://www.youtube.com/embed/OY9VwrJJeoY",
+  "Biceps with TRX": "https://www.youtube.com/embed/kEI6pC64FkA",
+  "Swimming 50m Sprints": "https://www.youtube.com/embed/ujPlg-gl3fo",
+  "Elliptical": "https://www.youtube.com/embed/EesEvYohy5o",
+  "One-Handed Kettlebell Curls": "https://www.youtube.com/embed/mgatBopgf9E",
+  "Medicine Ball Booklet Crunch": "https://www.youtube.com/embed/Ke4YFbkWoiM",
+  "Knee Raises": "https://www.youtube.com/embed/-Omb7LPOiqA",
+  "Sloper Hanging": "https://www.youtube.com/embed/VINdS8OicP0",
+  "Barbell Hack Squats": "https://www.youtube.com/embed/IC9E6R8E5e0",
+  "Dumbbell Push-Up": "https://www.youtube.com/embed/VrSGEXrwZAc",
+  "Seated Hip Adduction": "https://www.youtube.com/embed/tu4o4quPv2k",
+  "Barbell Lunges Standing": "https://www.youtube.com/embed/LTeEYafuNC8",
+  "Barbell Lunges Walking": "https://www.youtube.com/embed/XJyUHKWKnxc",
+  "Barbell Ab Rollout": "https://www.youtube.com/embed/lpXOnRMBp5A",
+  "Barbell Triceps Extension": "https://www.youtube.com/embed/FQdU42yjUfA",
+  "Barbell Reverse Wrist Curl": "https://www.youtube.com/embed/YOi0x2yXryA",
+  "Bear Walk": "https://www.youtube.com/embed/QwDDZDgtW-E",
+  "High Knees": "https://www.youtube.com/embed/MuTfLpvjqeQ",
+  "Lunges": "https://www.youtube.com/embed/TwEH620Pn6A",
+  "Pullup on Fingerboard": "https://www.youtube.com/embed/wy0ACWjQGIE",
+  "Side Split Squats Left": "https://www.youtube.com/embed/yUZKKpzpCQA",
+  "Side Split Squats Right": "https://www.youtube.com/embed/ala42_up81Q",
+  "Bulgarian Split Squats Left": "https://www.youtube.com/embed/uODWo4YqbT8",
+  "Bulgarian Split Squats Right": "https://www.youtube.com/embed/uODWo4YqbT8",
+  "Kneeling Kickbacks": "https://www.youtube.com/embed/uODWo4YqbT8",
+  "Split Squats Left": "https://www.youtube.com/embed/cAl7vD-DQwQ",
+  "Split Squats Right": "https://www.youtube.com/embed/hXpGSa5HYqY",
+  "Reverse Nordic Curl": "https://www.youtube.com/embed/Jf9KojDHN7E",
+  "Straight Bar Cable Curls": "https://www.youtube.com/embed/0TtZgAuC8Vw",
+  "Cable Fly": "https://www.youtube.com/embed/tGXIQR89-JE",
+  "Jump Rope - Basic Jumps": "https://www.youtube.com/embed/TxFeUcIPUHs",
+  "TRX Rows": "https://www.youtube.com/embed/yCuSGoe1gjY",
+  "Leg Raises Pull Up Bar": "https://www.youtube.com/embed/XQc0WHO90Lk",
+  "Forward Arm Circles": "https://www.youtube.com/embed/1N8SngQqCzw",
 };

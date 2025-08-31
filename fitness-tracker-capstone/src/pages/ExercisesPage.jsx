@@ -1,94 +1,51 @@
-import React, { useState, useEffect } from "react";
+// src/pages/ExercisesPage.jsx
+import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { videoLibrary } from "../utils/videoLibrary";
+import { fetchExercises } from "../services/wgerService";
 
-const ExercisesPage = () => {
+/**
+ * ExercisesPage
+ * - fetches exercises via wgerService (with abort support)
+ * - shows categories, search, and embedded video when available
+ */
+export default function ExercisesPage() {
   const [exercises, setExercises] = useState([]);
   const [filteredExercises, setFilteredExercises] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
-    const loadExercises = async () => {
+    let canceled = false;
+    const controller = new AbortController();
+
+    async function load() {
+      setLoading(true);
+      setErrorMsg("");
       try {
-        const response = await fetch(
-          "https://wger.de/api/v2/exerciseinfo/?limit=50&language=2&status=2"
-        );
-        const data = await response.json();
-
-        if (data?.results?.length > 0) {
-          const processedExercises = data.results.map((exercise) => {
-            const translation =
-              exercise.translations?.find((t) => t.language === 2) ||
-              exercise.translations?.[0];
-            let description = translation?.description || "No description available";
-            description = description.replace(/<[^>]*>/g, "").trim() || "No description available";
-
-            const name = translation?.name || "Unknown Exercise";
-
-            return {
-              id: exercise.id || Math.random(),
-              name,
-              description,
-              category: exercise.category?.name || "General",
-              muscles:
-                exercise.muscles?.map((m) => m.name_en || m.name).join(", ") || "Various",
-              equipment:
-                exercise.equipment?.map((e) => e.name).join(", ") || "None",
-              videoUrl: videoLibrary[name] || null // ✅ attach video if exists
-            };
-          });
-
-          setExercises(processedExercises);
-          setFilteredExercises(processedExercises);
-        } else {
-          throw new Error("No exercises found");
-        }
+        const results = await fetchExercises({ limit: 100, signal: controller.signal });
+        if (canceled) return;
+        setExercises(results);
+        setFilteredExercises(results);
       } catch (err) {
-        console.error("Error fetching exercises:", err);
-        setError(err.message);
-
-        // ✅ Fallback with demo videos
-        const fallbackExercises = [
-          {
-            id: 1,
-            name: "Push-ups",
-            description: "Bodyweight chest exercise",
-            category: "Chest",
-            muscles: "Chest, Shoulders, Triceps",
-            equipment: "None",
-            videoUrl: videoLibrary["Push-ups"]
-          },
-          {
-            id: 2,
-            name: "Squats",
-            description: "Lower body strength exercise",
-            category: "Legs",
-            muscles: "Quadriceps, Glutes",
-            equipment: "None",
-            videoUrl: videoLibrary["Squats"]
-          },
-          {
-            id: 3,
-            name: "Planks",
-            description: "Core stabilization exercise",
-            category: "Core",
-            muscles: "Abs, Core",
-            equipment: "None",
-            videoUrl: videoLibrary["Planks"]
-          }
-        ];
-
-        setExercises(fallbackExercises);
-        setFilteredExercises(fallbackExercises);
+        if (err?.name === "CanceledError" || err?.message === "canceled") {
+          // request was canceled — nothing to do
+          return;
+        }
+        console.error("[ExercisesPage] load error:", err);
+        setErrorMsg("Could not load exercises from API. Showing fallback set.");
       } finally {
-        setLoading(false);
+        if (!canceled) setLoading(false);
       }
-    };
+    }
 
-    loadExercises();
+    load();
+    return () => {
+      canceled = true;
+      controller.abort();
+    };
   }, []);
 
   const handleSearch = (query) => {
@@ -96,77 +53,59 @@ const ExercisesPage = () => {
       setFilteredExercises(exercises);
       return;
     }
-    const filtered = exercises.filter(
-      (exercise) =>
-        exercise.name.toLowerCase().includes(query.toLowerCase()) ||
-        exercise.muscles.toLowerCase().includes(query.toLowerCase()) ||
-        exercise.category.toLowerCase().includes(query.toLowerCase())
+    const q = query.toLowerCase();
+    const filtered = exercises.filter((ex) =>
+      (ex.name || "").toLowerCase().includes(q) ||
+      (ex.muscles || "").toLowerCase().includes(q) ||
+      (ex.category || "").toLowerCase().includes(q)
     );
     setFilteredExercises(filtered);
   };
 
+  // categories from exercises (unique + "All")
+  const categories = ["All", ...Array.from(new Set(exercises.map(e => (e.category || "General"))))];
+
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
-    if (category === "all") {
+    if (category === "All") {
       setFilteredExercises(exercises);
-    } else {
-      setFilteredExercises(
-        exercises.filter(
-          (exercise) => exercise.category.toLowerCase() === category.toLowerCase()
-        )
-      );
+      return;
     }
+    setFilteredExercises(exercises.filter(e => (e.category || "General").toLowerCase() === category.toLowerCase()));
   };
-
-  const categories = ["all", ...new Set(exercises.map((e) => e.category))];
 
   if (loading) return <LoadingSpinner message="Loading exercises..." />;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-cyan-300 px-6 py-12">
-      <h1 className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow mb-8">
-        🏋️ Exercise Database
-      </h1>
+    <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-cyan-300 px-6 py-12">
+      <h1 className="text-4xl font-extrabold text-center mb-8">🏋️ Exercise Database</h1>
 
-      {error && (
+      {errorMsg && (
         <div className="max-w-4xl mx-auto mb-6 p-4 bg-red-900/30 border border-red-500 rounded-lg">
-          <p className="text-red-400">⚠️ API Error: {error}</p>
-          <p className="text-sm text-gray-300">Showing fallback exercises with videos.</p>
+          <p className="text-red-400">⚠️ {errorMsg}</p>
         </div>
       )}
 
       <div className="max-w-7xl mx-auto">
-        {/* Search Bar */}
-        <SearchBar
-          onSearch={handleSearch}
-          placeholder="Search exercises by name, muscle, or equipment..."
-          className="max-w-2xl mx-auto"
-        />
+        <SearchBar onSearch={handleSearch} placeholder="Search by name, muscle, or category..." className="max-w-2xl mx-auto" />
 
-        {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-2 mt-6">
-          {categories.map((category) => (
+          {categories.map(c => (
             <button
-              key={category}
-              onClick={() => handleCategoryFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm transition ${
-                selectedCategory === category
-                  ? "bg-cyan-500 text-black font-bold shadow"
-                  : "bg-black/40 border border-cyan-500/30 text-cyan-300 hover:border-cyan-400/50"
-              }`}
+              key={c}
+              type="button"
+              onClick={() => handleCategoryFilter(c)}
+              className={`px-4 py-2 rounded-full text-sm transition ${selectedCategory === c ? "bg-cyan-500 text-black font-bold" : "bg-black/40 border border-cyan-500/30 text-cyan-300"}`}
+              aria-pressed={selectedCategory === c}
             >
-              {category === "all" ? "All Categories" : category}
+              {c}
             </button>
           ))}
         </div>
 
-        {/* Exercise Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {filteredExercises.map((exercise) => (
-            <div
-              key={exercise.id}
-              className="bg-black/40 border border-cyan-500/30 rounded-lg p-6 shadow hover:scale-105 transition"
-            >
+            <article key={exercise.id} className="bg-black/40 border border-cyan-500/30 rounded-lg p-6 shadow hover:scale-105 transition">
               <h2 className="text-xl font-bold text-cyan-300 mb-2">{exercise.name}</h2>
               <p className="text-sm text-gray-300 mb-4">{exercise.description}</p>
               <p className="text-xs text-purple-400">Category: {exercise.category}</p>
@@ -175,25 +114,22 @@ const ExercisesPage = () => {
                 <p className="text-xs text-yellow-400">Equipment: {exercise.equipment}</p>
               )}
 
-              {/* ✅ Embedded YouTube Video */}
-              {exercise.videoUrl && (
+              {videoLibrary[exercise.name] && (
                 <div className="mt-4 aspect-video">
                   <iframe
                     className="w-full h-full rounded-lg"
-                    src={exercise.videoUrl}
-                    title={exercise.name}
+                    src={videoLibrary[exercise.name]}
+                    title={`${exercise.name} video`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                  ></iframe>
+                  />
                 </div>
               )}
-            </div>
+            </article>
           ))}
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
-};
-
-export default ExercisesPage;
+}
